@@ -82,14 +82,7 @@ namespace LIBRARY_SYSTEM
         {
             Console.WriteLine("Enter the Author's name");
             name = Console.ReadLine();
-            a = Author.FindAuthor(authorsList, name);
-            if (a != null)
-            {
-                Console.WriteLine("This Author already exists");
-                return;
-            }
-            Author newAuthor = new Author(name);
-            authorsList.Add(newAuthor);
+            AuthorDBReader.AddAuthor(name);
         }
 
         private static void ReturnBook()
@@ -108,19 +101,11 @@ namespace LIBRARY_SYSTEM
 
         private static void AddBorrowerandBook()
         {
-            Console.WriteLine("Enter the Author's name");
-            name = Console.ReadLine();
-            a = Author.FindAuthor(authorsList, name);
-            if (a == null)
-            {
-                Console.WriteLine("This Author does not exist");
-                return;
-            }
             Console.WriteLine("Enter the name of book");
             string book = Console.ReadLine();
             Console.WriteLine("Enter your name");
             string borrower = Console.ReadLine();
-            a.AddBorrowerandBook(book, borrower);
+            BorrowerDBReader.AddBorrower(book, borrower);
         }
 
         private static void DisplayBooks()
@@ -140,14 +125,8 @@ namespace LIBRARY_SYSTEM
         {
             Console.WriteLine("Enter the Author's name");
             name = Console.ReadLine();
-            a = Author.FindAuthor(authorsList, name);
-            if (a == null)
-            {
-                Console.WriteLine("This Author does not exist");
-                return;
-            }
             Console.WriteLine("Enter the book name");
-            a.AddBook(Console.ReadLine());
+            BooksDBReader.AddBook(name,Console.ReadLine());
         }
     }
 }
